@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.imysak.mq.model.IdObject;
 import com.imysak.mq.model.Stats;
 import com.imysak.mq.service.MessageQueueManager;
 import com.imysak.mq.service.TextMessage;
@@ -25,8 +26,8 @@ public class ApiController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public void createQueue(@RequestBody String id) {
-        messageQueueManager.registerQueue(id);
+    public void createQueue(@RequestBody IdObject id) {
+        messageQueueManager.registerQueue(id.id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

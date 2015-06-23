@@ -10,4 +10,8 @@ public interface MessageQueue<M extends Message> {
 
     Stats getStats();
 
+    void setName(String name);
+
+    String getName();
+
 }

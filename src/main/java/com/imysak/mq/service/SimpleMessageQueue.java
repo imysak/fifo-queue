@@ -23,11 +23,13 @@ public class SimpleMessageQueue<M extends Message> implements MessageQueue<M> {
 
     @Override
     public void push(M e) {
+        pushedTotal.incrementAndGet();
         queue.offer(e);
     }
 
     @Override
     public M pop() {
+        popedTotal.incrementAndGet();
         return queue.poll();
     }
 
@@ -42,10 +44,12 @@ public class SimpleMessageQueue<M extends Message> implements MessageQueue<M> {
         return st;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }

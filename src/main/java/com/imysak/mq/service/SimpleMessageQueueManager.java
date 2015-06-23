@@ -20,6 +20,7 @@ public class SimpleMessageQueueManager<M extends Message> implements MessageQueu
     public boolean registerQueue(String id) {
         try {
             MessageQueue<M> mq = messageQueueFactory.create();
+            mq.setName(id);
             // in current implementation we ignore trying to re create Queue if queue with such 'id' already present
             messageQueueMap.putIfAbsent(id, mq);
         } catch (InstantiationException | IllegalAccessException e) {
